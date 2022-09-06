@@ -43,7 +43,7 @@ function RegisterPage() {
         if(response.payload.success) {
           navigate("/login");
         } else {
-          alert("Error");
+          alert("FAIL TO SIGN UP");
         }
       });
   }

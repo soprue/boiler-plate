@@ -69,6 +69,7 @@ app.post('/api/users/login', (req, res) => {
       userInfo.generateToken((err, userInfo) => {
         if(err) return res.status(400).send(err);
         
+        console.log(userInfo);
         res.cookie("x_auth", userInfo.token)
           .status(200)
           .json({ loginSuccess: true, userId: userInfo._id });
@@ -87,8 +88,8 @@ app.get('/api/users/auth', auth, (req, res) => {
     lastname: req.user.lastname,
     role: req.user.role,
     image: req.user.image
-  });
-});
+  })
+})
 
 app.get('/api/users/logout', auth, (req, res) => {
   User.findOneAndUpdate(
